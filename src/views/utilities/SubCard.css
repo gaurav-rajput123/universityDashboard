@@ -1,0 +1,25 @@
+.carde{
+    text-align: center;
+    padding: 15px;
+    margin: 10px 15px 15px 15px;
+    width: 300px !important;
+    height:300 px !important;
+    border-radius: 20px!important ;
+    margin:10 !important;
+    /* background-color: rgb(204, 202, 202); */
+    border-width: 2px !important;
+    border-color: black !important;
+    border-style: solid;
+    background: gray !important;
+    /* background: url("./images.jpg"); */
+}
+.heading{
+    font-size:14px;
+
+
+}
+.topic{
+    font-size: 10px;
+
+}
+

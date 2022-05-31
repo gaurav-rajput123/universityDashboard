@@ -1,0 +1,17 @@
+.dream {
+    /* background: url('./Banner.png'); */
+    background-size: cover;
+    position: relative;
+    height: 200px   ;
+    
+    /* opacity: 50%; */
+}
+.cover{
+    height: 100%;
+    width: 100%;
+    /* opacity: 60%; */
+    position: absolute;
+    background-color: rgb(128, 128, 128, 0.3);
+    padding: 24px 0px 24px 16px;
+    
+}
