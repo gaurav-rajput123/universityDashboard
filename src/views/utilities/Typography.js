@@ -32,8 +32,8 @@ const columns = [
         width: 90
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
+        field: 'Email ID',
+        headerName: 'Email ID',
         description: 'This column has a value getter and is not sortable.',
         sortable: false,
         width: 160,
@@ -54,7 +54,7 @@ const rows = [
 ];
 
 const Typography = () => (
-    <MainCard title="Student Status" secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}>
+    <MainCard title="Student Details" secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}>
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12} sm={12}>
                 <div style={{ height: 400, width: '100%' }}>

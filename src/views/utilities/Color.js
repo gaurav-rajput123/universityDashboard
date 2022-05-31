@@ -102,7 +102,7 @@ ColorBox.propTypes = {
 // ===============================|| UI COLOR ||=============================== //
 
 const UIColor = () => (
-    <MainCard title="Faculty Status" secondary={<SecondaryAction />}>
+    <MainCard title="Faculty Details" secondary={<SecondaryAction />}>
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <div style={{ height: 400, width: '100%' }}>

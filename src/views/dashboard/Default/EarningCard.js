@@ -189,7 +189,7 @@ const EarningCard = ({ isLoading }) => {
                                         color: 'white'
                                     }}
                                 >
-                                    Logged User: Siddharth Hooda
+                                    Logged User: MRSPTU Online
                                 </Typography>
                             </Grid>
                         </Grid>

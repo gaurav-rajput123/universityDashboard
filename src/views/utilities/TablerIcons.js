@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
-import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
+// import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 
 // assets
 import LinkIcon from '@mui/icons-material/Link';
@@ -59,11 +59,12 @@ const rows = [
 ];
 
 const TablerIcons = () => (
-    <MainCard title="Subjects Details" secondary={<SecondaryAction icon={<LinkIcon fontSize="small" />} link="https://tablericons.com/" />}>
+    <MainCard title="Payment Details">
         <Card sx={{ overflow: 'hidden' }}>
-            <QuiltedImageList />
+            {/* <QuiltedImageList /> */}
             {/* <CellRemarks /> */}
         </Card>
+        {/* secondary={<SecondaryAction icon={<LinkIcon fontSize="small" />} link="https://tablericons.com/" />} */}
     </MainCard>
 );
 

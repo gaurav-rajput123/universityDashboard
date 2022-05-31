@@ -53,7 +53,7 @@ const rows = [
 ];
 
 const MaterialIcons = () => (
-    <MainCard title="Material Icons" secondary={<SecondaryAction link="https://next.material-ui.com/components/material-icons/" />}>
+    <MainCard title="Course Details" secondary={<SecondaryAction link="https://next.material-ui.com/components/material-icons/" />}>
         <Card sx={{ overflow: 'hidden' }}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
