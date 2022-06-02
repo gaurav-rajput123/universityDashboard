@@ -34,7 +34,7 @@ const utilities = {
         },
         {
             id: 'util-color',
-            title: 'Course Creator',
+            title: 'Faculty',
             type: 'item',
             url: '/utils/util-color',
             // icon: icons.IconPalette,
@@ -69,13 +69,13 @@ const utilities = {
             url: '/icons/material-icons',
             breadcrumbs: false
         },
-        {
-            id: 'sample-page',
-            title: 'Colleges',
-            type: 'item',
-            url: '/sample-page',
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'sample-page',
+        //     title: 'Colleges',
+        //     type: 'item',
+        //     url: '/sample-page',
+        //     breadcrumbs: false
+        // },
         {
             id: 'material-icons',
             title: 'Logout',
