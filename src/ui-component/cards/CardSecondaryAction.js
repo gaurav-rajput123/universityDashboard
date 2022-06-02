@@ -7,7 +7,7 @@ import InputBase from '@mui/material/InputBase';
 import AddIcon from '@mui/icons-material/Add';
 // project imports
 import Avatar from '../extended/Avatar';
-
+import { alpha } from '@mui/system';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,

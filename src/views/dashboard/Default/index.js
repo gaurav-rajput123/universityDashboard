@@ -18,10 +18,23 @@ import PieCharts from '../PieChart';
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
+    const[number, setNumber] = useState('')
     useEffect(() => {
         setLoading(false);
     }, []);
+    useEffect(()=>{
+        async function getData(){
+            try {
+               const data = await fetch("https://reqres.in/api/users?page=2");
+               console.log(data)
+                setNumber(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
 
+        getData()
+    })
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>

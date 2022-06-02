@@ -9,7 +9,9 @@ import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
 import { DataGrid } from '@mui/x-data-grid';
-
+import { countContext } from 'index';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 // ===============================|| COLOR BOX ||=============================== //
 
 const columns = [
@@ -29,9 +31,9 @@ const columns = [
         width: 130
     },
     {
-        field: 'age',
-        headerName: 'Age',
-        type: 'number',
+        field: 'Email',
+        headerName: 'Email',
+        type: 'String',
         width: 90
     },
     {
@@ -44,19 +46,11 @@ const columns = [
     }
 ];
 
-const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 }
-];
+    
 
-const ColorBox = ({ bgcolor, title, data, dark }) => (
+const ColorBox = ({ bgcolor, title, data, dark }) =>{ 
+    
+    return (
     <>
         <Card sx={{ mb: 3 }}>
             <Box
@@ -90,7 +84,7 @@ const ColorBox = ({ bgcolor, title, data, dark }) => (
             </Grid>
         )}
     </>
-);
+)};
 
 ColorBox.propTypes = {
     bgcolor: PropTypes.string,
@@ -101,12 +95,43 @@ ColorBox.propTypes = {
 
 // ===============================|| UI COLOR ||=============================== //
 
-const UIColor = () => (
-    <MainCard title="Faculty Status" secondary={<SecondaryAction />}>
+const UIColor = () => {
+    const [teachers, setteacher]= useState([])
+    useEffect(()=>{
+        async function getTeachers () {
+            try {
+                const callRes = await axios({
+                    url: "http://localhost:8080/university/teacherlist", method: 'GET'
+                })
+                const dataRowArr = callRes.data.response.map((item)=>{
+                    return {
+                        id: item.id,
+                        Email: item.Email,
+                        firstName: item.Firstname,
+                        lastName: item.Lastname,
+                    }
+                })
+                console.log(dataRowArr)
+                setteacher(dataRowArr)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getTeachers()
+    },[])
+    const context = useContext(countContext)
+    return (
+    <MainCard title="Faculty Status" secondary={function(){
+        return (
+            <>
+            <span>Total Creator : {context.teacherCount}</span> 
+            </>
+        )
+    }()}>
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
+                    <DataGrid rows={teachers} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
                 </div>
             </Grid>
             {/* <Grid item xs={12}>
@@ -251,6 +276,6 @@ const UIColor = () => (
             </Grid> */}
         </Grid>
     </MainCard>
-);
+)};
 
 export default UIColor;

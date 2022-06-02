@@ -11,9 +11,14 @@ import { store } from 'store';
 
 // style + assets
 import 'assets/scss/style.scss';
+import React from 'react';
 
 // ==============================|| REACT DOM RENDER  ||============================== //
-
+export let countContext =  React.createContext({
+    teacherCount: "",
+    studentCount: "",
+    courseCount: "",
+})
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>

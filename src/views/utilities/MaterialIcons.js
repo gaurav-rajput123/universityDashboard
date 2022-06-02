@@ -11,6 +11,8 @@ import Paper from '@mui/material/Paper';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
+import { useContext } from 'react';
+import { countContext } from 'index';
 
 // styles
 const IFrameWrapper = styled('iframe')(({ theme }) => ({
@@ -52,8 +54,17 @@ const rows = [
     createData('Mobile App Development', 356, 16.0, <Button variant="text">Available</Button>, 3.9)
 ];
 
-const MaterialIcons = () => (
-    <MainCard title="Material Icons" secondary={<SecondaryAction link="https://next.material-ui.com/components/material-icons/" />}>
+const MaterialIcons = () => {
+   const context = useContext(countContext)
+   
+    return (
+    <MainCard title="Material Icons" secondary={function(){
+        return (
+            <>
+            <span>Total Courses : {context.courseCount}</span> 
+            </>
+        )
+    }()}>
         <Card sx={{ overflow: 'hidden' }}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -83,6 +94,6 @@ const MaterialIcons = () => (
             </TableContainer>
         </Card>
     </MainCard>
-);
+)};
 
 export default MaterialIcons;

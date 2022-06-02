@@ -7,6 +7,8 @@ import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
 import { DataGrid } from '@mui/x-data-grid';
+import { useContext } from 'react';
+import { countContext } from 'index';
 // ==============================|| TYPOGRAPHY ||============================== //
 
 const columns = [
@@ -53,8 +55,20 @@ const rows = [
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 }
 ];
 
-const Typography = () => (
-    <MainCard title="Student Status" secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}>
+const Typography = () => {
+    let context = useContext(countContext)
+    return (
+
+    <MainCard title="Student Status" 
+    secondary={function(){
+        return (
+            <>
+            <span>Total Students : {context.studentCount}</span> 
+            </>
+        )
+    }()
+    }
+    >
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12} sm={12}>
                 <div style={{ height: 400, width: '100%' }}>
@@ -166,6 +180,6 @@ const Typography = () => (
             </Grid> */}
         </Grid>
     </MainCard>
-);
+)};
 
 export default Typography;
