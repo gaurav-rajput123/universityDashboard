@@ -133,7 +133,10 @@ const TablerIcons = () =>
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid rows={row} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
+                    <DataGrid rows={row} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection getRowId={(item)=>{
+                        // console.log(item)
+                        return item.id + item.orderId
+                    }}/>
                 </div>
             </Grid>
             {/* <Grid item xs={12}>
