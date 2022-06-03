@@ -11,8 +11,9 @@ import Paper from '@mui/material/Paper';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { countContext } from 'index';
+import axios from 'axios';
 
 // styles
 const IFrameWrapper = styled('iframe')(({ theme }) => ({
@@ -46,17 +47,41 @@ function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-    createData('Computer Profeciency and Office Automation', 159, 6.0, <Button variant="text">Available</Button>, 4.0),
-    createData('Creating App for Beginners', 237, 9.0, <Button variant="text">Available</Button>, 4.3),
-    createData('Machine Learning', 262, 16.0, <Button variant="text">Unavailable</Button>, 6.0),
-    createData('Programming with python', 305, 3.7, <Button variant="text">Available</Button>, 4.3),
-    createData('Mobile App Development', 356, 16.0, <Button variant="text">Available</Button>, 3.9)
-];
+// const rows = [
+//     createData('Computer Profeciency and Office Automation', 159, 6.0, <Button variant="text">Available</Button>, 4.0),
+//     createData('Creating App for Beginners', 237, 9.0, <Button variant="text">Available</Button>, 4.3),
+//     createData('Machine Learning', 262, 16.0, <Button variant="text">Unavailable</Button>, 6.0),
+//     createData('Programming with python', 305, 3.7, <Button variant="text">Available</Button>, 4.3),
+//     createData('Mobile App Development', 356, 16.0, <Button variant="text">Available</Button>, 3.9)
+// ];
 
 const MaterialIcons = () => {
    const context = useContext(countContext)
-   
+   const [rows, setRows] = useState([])
+   useEffect(()=>{
+    async function getTeachers () {
+        try {
+            const callRes = await axios({
+                url: "https://api.keewesolutions.com/university/courselist", method: 'GET'
+            })
+            const dataRowArr = callRes.data.response.map((item)=>{
+                return {
+                    id: item.courseId,
+                    title: item.title,
+                    category: item.category,
+                    no: item.number,
+                    organisation: item.organisation
+               
+                }
+            })
+            console.log(dataRowArr)
+            setRows(dataRowArr)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    getTeachers()
+},[])
     return (
     <MainCard title="Material Icons" secondary={function(){
         return (
@@ -70,23 +95,23 @@ const MaterialIcons = () => {
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                     <TableHead>
                         <TableRow>
-                            <StyledTableCell>Courses</StyledTableCell>
-                            <StyledTableCell align="right">Description</StyledTableCell>
-                            <StyledTableCell align="right">Cordinator</StyledTableCell>
-                            <StyledTableCell align="right">Status</StyledTableCell>
-                            <StyledTableCell align="right">Uploaded On</StyledTableCell>
+                        <StyledTableCell align="center">id</StyledTableCell>
+                            <StyledTableCell align='center'>Courses</StyledTableCell>
+                            <StyledTableCell align="center">Category</StyledTableCell>
+                            <StyledTableCell align="center">Price</StyledTableCell>
+                            <StyledTableCell align="center">Organisation</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
+                            <StyledTableRow key={row.id}>
                                 <StyledTableCell component="th" scope="row">
-                                    {row.name}
+                                    {row.id}
                                 </StyledTableCell>
-                                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                <StyledTableCell align="center">{row.title}</StyledTableCell>
+                                <StyledTableCell align="center">{row.category}</StyledTableCell>
+                                <StyledTableCell align="center">{row.no}</StyledTableCell>
+                                <StyledTableCell align="center">{row.organisation}</StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>
