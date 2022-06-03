@@ -14,13 +14,13 @@ import axios from 'axios';
 
 const columns = [
     {
-        field: 'userId',
+        field: 'id',
         headerName: 'userId',
         width: 70
     },
     {
         field: 'courseId',
-        headerName: 'courseId',
+        headerName: 'Course Name',
         width: 350
     },
     // {
@@ -66,11 +66,38 @@ const Typography = () => {
                 const callRes = await axios({
                     url: "https://api.keewesolutions.com/university/studentlist", method: 'GET'
                 })
+                const idArray = callRes.data.response.map(item=>{
+                    return item.courseId
+                })
+                let dataobj = {}
+                const courseIdArray = []
+                for(let item of callRes.data.response){
+                    dataobj[item.courseId] = item.id
+                    courseIdArray.push(item.courseId)
+                }
+
+                const courseDataResponse = await axios({
+                    url: "https://lmsapi.keewesolutions.com/db/fetchcoursedatawp",
+                    method: 'POST',
+                    data: {
+                        courseIds: courseIdArray
+                    }
+                })
+                let finalObj = {
+
+                }
+                console.log(courseDataResponse.data.data)
+                for(let item of courseDataResponse.data.data){
+                    let userId = dataobj[item.id]
+                    finalObj[userId] = item.courseDetails.title
+                }
+                console.log(finalObj)
+
                 const dataRowArr = callRes.data.response.map((item)=>{
                     return {
-                        userId: item.id,
-                        courseId: item.courseId,
-                        id: item.id + item.courseId
+                        id: item.id,
+                        courseId: finalObj[item.id],
+                        // id: item.id + item.courseId
                     }
                 })
                 console.log(dataRowArr)

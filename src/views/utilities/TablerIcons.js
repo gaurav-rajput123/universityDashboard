@@ -9,18 +9,20 @@ import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
 import { DataGrid } from '@mui/x-data-grid';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 // ===============================|| COLOR BOX ||=============================== //
 
 const columns = [
     {
         field: 'id',
-        headerName: 'cource ID',
-        width: 100
+        headerName: 'course ID',
+        width: 350
     },
     {
-        field: 'courseName',
-        headerName: 'Course name',
+        field: 'userId',
+        headerName: 'userId',
         width: 130
     },
     {
@@ -29,13 +31,13 @@ const columns = [
         width: 100
     },
     {
-        field: 'order',
+        field: 'orderId',
         headerName: 'Order ID',
         type: 'number',
-        width: 100
+        width: 150
     },
     {
-        field: 'payment',
+        field: 'paymentStatus',
         headerName: 'Payment ID',
         width: 100
     }
@@ -98,12 +100,40 @@ ColorBox.propTypes = {
 
 // ===============================|| UI COLOR ||=============================== //
 
-const TablerIcons = () => (
+const TablerIcons = () => 
+
+{
+    const [row, setRow]= useState([])
+    useEffect(()=>{
+        async function getTeachers () {
+            try {
+                const callRes = await axios({
+                    url: "https://api.keewesolutions.com/university/paymentlist", method: 'GET'
+                })
+                const dataRowArr = callRes.data.response.map((item)=>{
+                    return {
+                        id: item.courseId,
+                        userId: item.userId,
+                        amount: item.amount,
+                        orderId: item.orderId,
+                        paymentStatus: item.paymentStatus
+                    }
+                })
+                console.log(dataRowArr)
+                setRow(dataRowArr)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getTeachers()
+    },[])
+    
+    return (
     <MainCard title="Payment Details" secondary={<SecondaryAction />}>
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
+                    <DataGrid rows={row} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
                 </div>
             </Grid>
             {/* <Grid item xs={12}>
@@ -248,6 +278,6 @@ const TablerIcons = () => (
             </Grid> */}
         </Grid>
     </MainCard>
-);
+)};
 
 export default TablerIcons;

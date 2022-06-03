@@ -64,6 +64,7 @@ const MaterialIcons = () => {
             const callRes = await axios({
                 url: "https://api.keewesolutions.com/university/courselist", method: 'GET'
             })
+            console.log(callRes.data.response)
             const dataRowArr = callRes.data.response.map((item)=>{
                 return {
                     id: item.courseId,
@@ -71,7 +72,6 @@ const MaterialIcons = () => {
                     category: item.category,
                     no: item.number,
                     organisation: item.organisation
-               
                 }
             })
             console.log(dataRowArr)
