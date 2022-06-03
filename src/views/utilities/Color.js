@@ -46,21 +46,7 @@ const columns = [
     }
 ];
 
-<<<<<<< HEAD
     
-=======
-const rows = [
-    { id: 1, lastName: 'Kumari', firstName: 'Neha', age: 35 },
-    { id: 2, lastName: 'Sharma', firstName: 'Lata', age: 42 },
-    { id: 3, lastName: 'Kaur', firstName: 'Jasmine', age: 45 },
-    { id: 4, lastName: 'khatri', firstName: 'Anchal', age: 16 },
-    { id: 5, lastName: 'Rawat', firstName: 'Sakshi', age: null },
-    { id: 6, lastName: 'Sharma', firstName: 'Srijana', age: 150 },
-    { id: 7, lastName: 'Kaur', firstName: 'Simran', age: 44 },
-    { id: 8, lastName: 'Saluja', firstName: 'Roji', age: 36 },
-    { id: 9, lastName: 'Kumari', firstName: 'Sita', age: 65 }
-];
->>>>>>> 0d4b7aeef677cf1220b33781bdfa7ee2dd264679
 
 const ColorBox = ({ bgcolor, title, data, dark }) =>{ 
     
@@ -115,7 +101,7 @@ const UIColor = () => {
         async function getTeachers () {
             try {
                 const callRes = await axios({
-                    url: "http://localhost:8080/university/teacherlist", method: 'GET'
+                    url: "https://api.keewesolutions.com/university/teacherlist", method: 'GET'
                 })
                 const dataRowArr = callRes.data.response.map((item)=>{
                     return {
