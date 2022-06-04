@@ -16,7 +16,7 @@ const columns = [
     {
         field: 'id',
         headerName: 'userId',
-        width: 70
+        width: 200
     },
     {
         field: 'courseId',
