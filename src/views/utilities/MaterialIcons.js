@@ -57,6 +57,7 @@ function createData(name, calories, fat, carbs, protein) {
 
 const MaterialIcons = () => {
    const context = useContext(countContext)
+   const [totalCount, setTotalCount] = useState('...')
    const [rows, setRows] = useState([])
    useEffect(()=>{
     async function getTeachers () {
@@ -76,6 +77,7 @@ const MaterialIcons = () => {
             })
             console.log(dataRowArr)
             setRows(dataRowArr)
+            setTotalCount(dataRowArr.length)
         } catch (error) {
             console.log(error)
         }
@@ -86,7 +88,7 @@ const MaterialIcons = () => {
     <MainCard title="Material Icons" secondary={function(){
         return (
             <>
-            <span>Total Courses : {context.courseCount}</span> 
+            <span>Total Courses : {totalCount}</span> 
             </>
         )
     }()}>
