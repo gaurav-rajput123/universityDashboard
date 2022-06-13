@@ -114,7 +114,7 @@ const TablerIcons = () =>
                     return {
                         id: item.courseId,
                         userId: item.userId,
-                        amount: item.amount,
+                        amount: item.amount/100,
                         orderId: item.orderId,
                         paymentStatus: item.paymentStatus
                     }
