@@ -10,7 +10,8 @@ import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { countContext } from 'index';
 
 // ===============================|| COLOR BOX ||=============================== //
 
@@ -23,7 +24,7 @@ const columns = [
     {
         field: 'userId',
         headerName: 'userId',
-        width: 130
+        width: 150
     },
     {
         field: 'amount',
@@ -34,7 +35,7 @@ const columns = [
         field: 'orderId',
         headerName: 'Order ID',
         type: 'number',
-        width: 150
+        width: 250
     },
     {
         field: 'paymentStatus',
@@ -103,6 +104,7 @@ ColorBox.propTypes = {
 const TablerIcons = () => 
 
 {
+    let context = useContext(countContext)
     const [row, setRow]= useState([])
     useEffect(()=>{
         async function getTeachers () {
@@ -129,7 +131,15 @@ const TablerIcons = () =>
     },[])
     
     return (
-    <MainCard title="Payment Details" secondary={<SecondaryAction />}>
+    <MainCard title="Payment Details" secondary={function(){
+        return (
+            <>
+            <span>Total Payments :{context.studentCount}</span> 
+            </>
+        )
+    }()
+    }
+    >
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <div style={{ height: 400, width: '100%' }}>
