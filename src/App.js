@@ -2,10 +2,15 @@ import { useSelector } from 'react-redux';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import MainRoutes from 'routes/MainRoutes';
-import AuthenticationRoutes from 'routes/AuthenticationRoutes';
+// import { useNavigate } from 'react-router-dom';
+// import MainRoutes from 'routes/MainRoutes';
+// import AuthenticationRoutes from 'routes/AuthenticationRoutes';
 // import { UserContext } from 'ContextFiles';
+// import RegisterCard from './formlogin/components/RegisterCard';
+// import Verification from 'formlogin/components/Verification';
+// import NewPassword from 'formlogin/components/NewPassword';
+// import ForgotPassword from 'formlogin/components/ForgotPasswordEmail';
+// import { Routes, Route, Outlet } from 'react-router-dom';
 
 // routing
 import Routes from 'routes';
@@ -90,21 +95,18 @@ const App = () => {
     // }, []);
 
     return (
-        <countContext.Provider value={{ ...countState, setCountContext: setCountState }}>
-            <StyledEngineProvider injectFirst>
-                <ThemeProvider theme={themes(customization)}>
-                    <CssBaseline />
-                    <NavigationScroll>
-                        {/* <UserContext.Provider value={{...authState, setNewUser: setAuthState}}>
-                            {authState.authenticated ? */}
-                            <Routes>
-
-                            </Routes>
-                        {/* </UserContext.Provider> */}
-                    </NavigationScroll>
-                </ThemeProvider>
-            </StyledEngineProvider>
-        </countContext.Provider>
+        <>
+            <countContext.Provider value={{ ...countState, setCountContext: setCountState }}>
+                <StyledEngineProvider injectFirst>
+                    <ThemeProvider theme={themes(customization)}>
+                        <CssBaseline />
+                        <NavigationScroll>
+                            <Routes />
+                        </NavigationScroll>
+                    </ThemeProvider>
+                </StyledEngineProvider>
+            </countContext.Provider>
+        </>
     );
 };
 
