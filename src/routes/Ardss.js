@@ -24,9 +24,9 @@ export default function Ardss() {
                 }} />
                 </a>
                 <Typography alignSelf="center" color={"white"} fontWeight={"bold"} fontSize={"50px"} fontFamily={"'Poppins', sans-serif"}>
-                    Start <br />
-                    L-Earning<br />
-                    With MRSPTU
+                    MRSPTU Online<br />
+                    University<br />
+                    Dashboard
                 </Typography>
             </Grid>
             {/* </Grid>

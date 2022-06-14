@@ -73,7 +73,7 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    if(email == "hi" && password=="hi"){
+    if(email == "info@mrsptuonline.com" && password=="Mrsptu@online321"){
       contextUser.setIsAuth(true)
       navigate('/')
 
@@ -140,7 +140,7 @@ export default function Login() {
                 type="submit"
                 variant="contained"
                 sx={{ backgroundColor: "#06213F", borderRadius: '4px', textTransform: 'none', marginRight: '5%' }} >Sign In</Button>
-              <Typography onClick={handleForgotPassword} fullWidth sx={{ "&:hover": { textDecoration: 'underline', cursor: 'pointer' }, color: "#06213F", textTransform: 'none' }}>Forgot Password ?</Typography>
+              {/* <Typography onClick={handleForgotPassword} fullWidth sx={{ "&:hover": { textDecoration: 'underline', cursor: 'pointer' }, color: "#06213F", textTransform: 'none' }}>Forgot Password ?</Typography> */}
             </Grid>
           </Box>
         </Grid>

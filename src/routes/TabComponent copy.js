@@ -65,7 +65,7 @@ export default function TabComponent(props) {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={id} aria-label="tabs example">
-          <Tab label="Register" onClick={handleRegister} {...a11yProps(id)} />
+          {/* <Tab label="Register" onClick={handleRegister} {...a11yProps(id)} /> */}
           <Tab label="Sign In " onClick={handleLogin} {...a11yProps(id)} />
         </Tabs>
       </Box>
