@@ -104,7 +104,7 @@ const Typography = () => {
     secondary={function(){
         return (
             <>
-            <span>Total Students : 6 {context.studentCount}</span> 
+            <span>Total Students :{context.studentCount}</span> 
             </>
         )
     }()
