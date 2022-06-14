@@ -16,32 +16,18 @@ const columns = [
     {
         field: 'userId',
         headerName: 'user',
-        width: 200
-    },
-    {
-        field: 'courseId',
-        headerName: 'courseId',
         width: 350
     },
-    //  {
-    //      field: 'Coursename',
-    //      headerName: 'Course Name',
-    //     width: 130
-    //  },
     // {
-    //     field: 'lastName',
-    //     headerName: 'Last name',
-    //     width: 130
+    //     field: 'coursename',
+    //     headerName: 'Course Name',
+    //     width: 350
     // },
-    
-    // {
-    //     field: 'Email ID',
-    //     headerName: 'Email ID',
-    //     description: 'This column has a value getter and is not sortable.',
-    //     sortable: false,
-    //     width: 160,
-    //     valueGetter: (params) => `${params.row.firstName || ''} ${params.row.lastName || ''}`
-    // }
+    {
+        field: 'id',
+        headerName: 'Course Id',
+        width: 350
+    },
 ];
 
 // const rows = [
@@ -66,47 +52,47 @@ const Typography = () => {
                 const callRes = await axios({
                     url: "https://api.keewesolutions.com/university/paymentlist", method: 'GET'
                 })
-                // const idArray = callRes.data.response.map((item)=>{
-                //     return {
-                //         courseId: item.courseId,
-                //         userId: item.userId,
-                       
+                const dataRowArr = callRes.data.response.map((item)=>{
+                    return{
+                        id: item.courseId,
+                        userId: item.userId
+                }
+            })
+               
+
+                // let dataobj = {}
+                // const courseIdArray = []
+                // for(let [i,item] of callRes.data.response.entries()){
+                //     dataobj[item.courseId] = i
+                //     courseIdArray.push(item.courseId)
+                // }
+
+                // const courseDataResponse = await axios({
+                //     url: "https://lmsapi.keewesolutions.com/db/fetchcoursedatawp",
+                //     method: 'POST',
+                //     data: {
+                //         courseIds: courseIdArray
                 //     }
                 // })
+                // console.log(courseDataResponse)
+                // let finalObj = {
 
+                // }
+                // console.log(courseDataResponse.data.data)
+                // for(let item of courseDataResponse.data.data){
+                //     let userId1 = dataobj[item.id]
+                //     finalObj[userId1] = item.courseDetails.title
+                // }
+                // console.log(finalObj)
 
-                let dataobj = {}
-                const courseIdArray = []
-                for(let item of callRes.data.response){
-                    dataobj[item.courseId] = item.id
-                    courseIdArray.push(item.courseId)
-                }
-
-                const courseDataResponse = await axios({
-                    url: "https://lmsapi.keewesolutions.com/db/fetchcoursedatawp",
-                    method: 'POST',
-                    data: {
-                        courseIds: courseIdArray
-                    }
-                })
-                console.log(courseDataResponse)
-                let finalObj = {
-
-                }
-                console.log(courseDataResponse.data.data)
-                for(let item of courseDataResponse.data.data){
-                    let userId1 = dataobj[item.id]
-                    finalObj[userId1] = item.courseDetails.title
-                }
-                console.log(finalObj)
-
-                const dataRowArr = callRes.data.response.map((item)=>{
-                    return {
-                        userId: item.userId,
-                        courseId: finalObj[item.id],
-                         id: item.id + item.courseId
-                    }
-                })
+                // const dataRowArr = callRes.data.response.map((item,i)=>{
+                //     return {
+                //         userId: item.userId,
+                //         courseId: item.courseId,
+                //         coursename: finalObj[i],
+                //          id: item.id + item.courseId
+                //     }
+                // })
 
 
 
@@ -124,7 +110,7 @@ const Typography = () => {
     secondary={function(){
         return (
             <>
-            <span>Total Students : {context.studentCount}</span> 
+            <span>Total Students :{context.studentCount}</span> 
             </>
         )
     }()
