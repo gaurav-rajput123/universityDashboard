@@ -24,7 +24,7 @@ const columns = [
     //     width: 350
     // },
     {
-        field: 'courseId',
+        field: 'id',
         headerName: 'Course Id',
         width: 350
     },
@@ -52,41 +52,47 @@ const Typography = () => {
                 const callRes = await axios({
                     url: "https://api.keewesolutions.com/university/paymentlist", method: 'GET'
                 })
+                const dataRowArr = callRes.data.response.map((item)=>{
+                    return{
+                        id: item.courseId,
+                        userId: item.userId
+                }
+            })
                
 
-                let dataobj = {}
-                const courseIdArray = []
-                for(let item of callRes.data.response){
-                    dataobj[item.courseId] = item.id
-                    courseIdArray.push(item.courseId)
-                }
+                // let dataobj = {}
+                // const courseIdArray = []
+                // for(let item of callRes.data.response){
+                //     dataobj[item.courseId] = item.id
+                //     courseIdArray.push(item.courseId)
+                // }
 
-                const courseDataResponse = await axios({
-                    url: "https://lmsapi.keewesolutions.com/db/fetchcoursedatawp",
-                    method: 'POST',
-                    data: {
-                        courseIds: courseIdArray
-                    }
-                })
-                console.log(courseDataResponse)
-                let finalObj = {
+                // const courseDataResponse = await axios({
+                //     url: "https://lmsapi.keewesolutions.com/db/fetchcoursedatawp",
+                //     method: 'POST',
+                //     data: {
+                //         courseIds: courseIdArray
+                //     }
+                // })
+                // console.log(courseDataResponse)
+                // let finalObj = {
 
-                }
-                console.log(courseDataResponse.data.data)
-                for(let item of courseDataResponse.data.data){
-                    let userId1 = dataobj[item.id]
-                    finalObj[userId1] = item.courseDetails.title
-                }
-                console.log(finalObj)
+                // }
+                // console.log(courseDataResponse.data.data)
+                // for(let item of courseDataResponse.data.data){
+                //     let userId1 = dataobj[item.id]
+                //     finalObj[userId1] = item.courseDetails.title
+                // }
+                // console.log(finalObj)
 
-                const dataRowArr = callRes.data.response.map((item)=>{
-                    return {
-                        userId: item.userId,
-                        courseId: item.courseId,
-                        // coursename: finalObj[item.id],
-                         id: item.id + item.courseId
-                    }
-                })
+                // const dataRowArr = callRes.data.response.map((item)=>{
+                //     return {
+                //         userId: item.userId,
+                //         courseId: item.courseId,
+                //         // coursename: finalObj[item.id],
+                //          id: item.id + item.courseId
+                //     }
+                // })
 
 
 
