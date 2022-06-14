@@ -16,32 +16,18 @@ const columns = [
     {
         field: 'userId',
         headerName: 'user',
-        width: 200
-    },
-    {
-        field: 'courseId',
-        headerName: 'courseId',
         width: 350
     },
-    //  {
-    //      field: 'Coursename',
-    //      headerName: 'Course Name',
-    //     width: 130
-    //  },
     // {
-    //     field: 'lastName',
-    //     headerName: 'Last name',
-    //     width: 130
+    //     field: 'coursename',
+    //     headerName: 'Course Name',
+    //     width: 350
     // },
-    
-    // {
-    //     field: 'Email ID',
-    //     headerName: 'Email ID',
-    //     description: 'This column has a value getter and is not sortable.',
-    //     sortable: false,
-    //     width: 160,
-    //     valueGetter: (params) => `${params.row.firstName || ''} ${params.row.lastName || ''}`
-    // }
+    {
+        field: 'courseId',
+        headerName: 'Course Id',
+        width: 350
+    },
 ];
 
 // const rows = [
@@ -66,14 +52,7 @@ const Typography = () => {
                 const callRes = await axios({
                     url: "https://api.keewesolutions.com/university/paymentlist", method: 'GET'
                 })
-                // const idArray = callRes.data.response.map((item)=>{
-                //     return {
-                //         courseId: item.courseId,
-                //         userId: item.userId,
-                       
-                //     }
-                // })
-
+               
 
                 let dataobj = {}
                 const courseIdArray = []
@@ -103,7 +82,8 @@ const Typography = () => {
                 const dataRowArr = callRes.data.response.map((item)=>{
                     return {
                         userId: item.userId,
-                        courseId: finalObj[item.id],
+                        courseId: item.courseId,
+                        // coursename: finalObj[item.id],
                          id: item.id + item.courseId
                     }
                 })
@@ -124,7 +104,7 @@ const Typography = () => {
     secondary={function(){
         return (
             <>
-            <span>Total Students : {context.studentCount}</span> 
+            <span>Total Students : 6 {context.studentCount}</span> 
             </>
         )
     }()

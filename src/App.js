@@ -32,7 +32,7 @@ const App = () => {
                 })
                 let newCountContext = {
                     teacherCount: countData.data.response.courseUser,
-                    studentCount: countData.data.response.courseStudent,
+                    studentCount: countData.data.response.StudentCourse,
                     courseCount: countData.data.response.courseDetails,
                 }
                 setCountState(newCountContext)
