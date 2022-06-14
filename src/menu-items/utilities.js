@@ -76,13 +76,13 @@ const utilities = {
         //     url: '/sample-page',
         //     breadcrumbs: false
         // },
-        {
-            id: 'material-icons',
-            title: 'Logout',
-            type: 'item',
-            url: '/icons/material-icons',
-            breadcrumbs: false
-        }
+        // {
+        //     id: 'material-icons',
+        //     title: 'Logout',
+        //     type: 'item',
+        //     url: '/icons/material-icons',
+        //     breadcrumbs: false
+        // }
     ]
 };
 

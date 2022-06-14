@@ -112,7 +112,7 @@ const MenuCard = () => {
                                     Admin
                                 </Typography>
                             }
-                            secondary={<Typography variant="caption"> mrsptu@gmail.com</Typography>}
+                            secondary={<Typography variant="caption">info@mrsptuonline.com</Typography>}
                         />
                     </ListItem>
                 </List>

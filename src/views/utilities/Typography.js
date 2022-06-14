@@ -66,6 +66,9 @@ const Typography = () => {
                 const callRes = await axios({
                     url: "https://api.keewesolutions.com/university/studentlist", method: 'GET'
                 })
+                console.log(
+                    callRes
+                )
                 const idArray = callRes.data.response.map(item=>{
                     return item.courseId
                 })
@@ -83,6 +86,7 @@ const Typography = () => {
                         courseIds: courseIdArray
                     }
                 })
+                console.log(courseDataResponse)
                 let finalObj = {
 
                 }
