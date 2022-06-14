@@ -248,12 +248,12 @@ const ProfileSection = () => {
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     selected={selectedIndex === 0}
-                                                    onClick={(event) => handleListItemClick(event, 0, '/user/account-profile/profile1')}
+                                                    // onClick={(event) => handleListItemClick(event, 0, '/user/account-profile/profile1')}
                                                 >
-                                                    <ListItemIcon>
+                                                    {/* <ListItemIcon>
                                                         <IconSettings stroke={1.5} size="1.3rem" />
-                                                    </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant="body2">Account Settings</Typography>} />
+                                                    </ListItemIcon> */}
+                                                    <ListItemText primary={<Typography variant="h3">Hi, Admin</Typography>} />
                                                 </ListItemButton>
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
@@ -263,7 +263,9 @@ const ProfileSection = () => {
                                                     <ListItemIcon>
                                                         <IconLogout stroke={1.5} size="1.3rem" />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
+                                                    <ListItemText  >
+                                                        <a href='https://university.mrsptuonline.com/' style={{textDecoration:'none'}}>Logout</a>
+                                                    </ListItemText>
                                                 </ListItemButton>
                                                 {/* <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}

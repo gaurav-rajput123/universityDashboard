@@ -71,7 +71,7 @@ const MaterialIcons = () => {
                     id: item.courseId,
                     title: item.title,
                     category: item.category,
-                    no: item.number,
+                    no: item.price,
                     organisation: item.organisation
                 }
             })
@@ -85,7 +85,7 @@ const MaterialIcons = () => {
     getTeachers()
 },[])
     return (
-    <MainCard title="Material Icons" secondary={function(){
+    <MainCard title="All Courses" secondary={function(){
         return (
             <>
             <span>Total Courses : {totalCount}</span> 
