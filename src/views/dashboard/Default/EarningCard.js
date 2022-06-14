@@ -180,7 +180,7 @@ const EarningCard = ({ isLoading }) => {
                                         color: 'white'
                                     }}
                                 >
-                                    Logged ID: ADJE323N3
+                                    Logged ID: info@mrsptuonline
                                 </Typography>
                                 <Typography
                                     sx={{

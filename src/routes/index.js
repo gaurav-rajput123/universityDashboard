@@ -9,4 +9,5 @@ import config from 'config';
 
 export default function ThemeRoutes() {
     return useRoutes([MainRoutes, AuthenticationRoutes], config.basename);
+    
 }
