@@ -30,15 +30,15 @@ const MainRoutes = {
             element: <DashboardDefault />
         },
         {
-            path: '/dashboard/default',
+            path: '/home',
             element: <DashboardDefault />
         },
         {
-            path: '/utils/util-typography',
+            path: '/students',
             element: <UtilsTypography />
         },
         {
-            path: '/utils/util-color',
+            path: '/faculty',
             element: <UtilsColor />
         },
         {
@@ -46,11 +46,11 @@ const MainRoutes = {
             element: <UtilsShadow />
         },
         {
-            path: '/icons/tabler-icons',
+            path: '/payment',
             element: <UtilsTablerIcons />
         },
         {
-            path: '/icons/material-icons',
+            path: '/courses',
             element: <UtilsMaterialIcons />
         },
         {
