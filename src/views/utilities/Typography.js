@@ -14,20 +14,20 @@ import axios from 'axios';
 
 const columns = [
     {
-        field: 'id',
-        headerName: 'userId',
+        field: 'userId',
+        headerName: 'user',
         width: 200
     },
     {
         field: 'courseId',
-        headerName: 'Course Name',
+        headerName: 'courseId',
         width: 350
     },
-    // {
-    //     field: 'firstName',
-    //     headerName: 'First name',
+    //  {
+    //      field: 'Coursename',
+    //      headerName: 'Course Name',
     //     width: 130
-    // },
+    //  },
     // {
     //     field: 'lastName',
     //     headerName: 'Last name',
@@ -59,19 +59,22 @@ const columns = [
 const Typography = () => {
     let context = useContext(countContext)
 
-    const [rows, setRows] = useState([])
+    const [rows, setRow] = useState([])
     useEffect(()=>{
         async function getTeachers () {
             try {
                 const callRes = await axios({
-                    url: "https://api.keewesolutions.com/university/studentlist", method: 'GET'
+                    url: "https://api.keewesolutions.com/university/paymentlist", method: 'GET'
                 })
-                console.log(
-                    callRes
-                )
-                const idArray = callRes.data.response.map(item=>{
-                    return item.courseId
-                })
+                // const idArray = callRes.data.response.map((item)=>{
+                //     return {
+                //         courseId: item.courseId,
+                //         userId: item.userId,
+                       
+                //     }
+                // })
+
+
                 let dataobj = {}
                 const courseIdArray = []
                 for(let item of callRes.data.response){
@@ -92,20 +95,23 @@ const Typography = () => {
                 }
                 console.log(courseDataResponse.data.data)
                 for(let item of courseDataResponse.data.data){
-                    let userId = dataobj[item.id]
-                    finalObj[userId] = item.courseDetails.title
+                    let userId1 = dataobj[item.id]
+                    finalObj[userId1] = item.courseDetails.title
                 }
                 console.log(finalObj)
 
                 const dataRowArr = callRes.data.response.map((item)=>{
                     return {
-                        id: item.id,
+                        userId: item.userId,
                         courseId: finalObj[item.id],
-                        // id: item.id + item.courseId
+                         id: item.id + item.courseId
                     }
                 })
+
+
+
                 console.log(dataRowArr)
-                setRows(dataRowArr)
+                setRow(dataRowArr)
             } catch (error) {
                 console.log(error)
             }
