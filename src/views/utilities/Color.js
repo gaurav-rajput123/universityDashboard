@@ -18,7 +18,7 @@ const columns = [
     {
         field: 'id',
         headerName: 'ID',
-        width: 70
+        width: 150
     },
     {
         field: 'firstName',
@@ -34,7 +34,7 @@ const columns = [
         field: 'Email',
         headerName: 'Email',
         type: 'String',
-        width: 90
+        width: 300
     },
     {
         field: 'fullName',
