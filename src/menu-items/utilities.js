@@ -20,7 +20,7 @@ const utilities = {
             id: 'default',
             title: 'Home',
             type: 'item',
-            url: '/dashboard/default',
+            url: '/home',
             // icon: icons.IconDashboard,
             breadcrumbs: false
         },
@@ -28,7 +28,7 @@ const utilities = {
             id: 'util-typography',
             title: 'Students',
             type: 'item',
-            url: '/utils/util-typography',
+            url: '/students',
             // icon: icons.Student,
             breadcrumbs: false
         },
@@ -36,7 +36,7 @@ const utilities = {
             id: 'util-color',
             title: 'Faculty',
             type: 'item',
-            url: '/utils/util-color',
+            url: '/faculty',
             // icon: icons.IconPalette,
             breadcrumbs: false
         },
@@ -59,14 +59,14 @@ const utilities = {
             id: 'tabler-icons',
             title: 'Payment',
             type: 'item',
-            url: '/icons/tabler-icons',
+            url: '/payment',
             breadcrumbs: false
         },
         {
             id: 'material-icons',
             title: 'Courses',
             type: 'item',
-            url: '/icons/material-icons',
+            url: '/courses',
             breadcrumbs: false
         },
         // {
